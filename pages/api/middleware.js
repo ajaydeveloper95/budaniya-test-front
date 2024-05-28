@@ -14,14 +14,14 @@ const corsOptions = {
 export function middleware(request) {
   // Check the origin from the request
   const origin = request.headers.get("origin") ?? "";
-  const isAllowedOrigin = allowedOrigins.includes(origin);
+  const isAllowedOrigin = "*";
 
   // Handle preflighted requests
   const isPreflight = request.method === "OPTIONS";
 
   if (isPreflight) {
     const preflightHeaders = {
-      ...(isAllowedOrigin && { "Access-Control-Allow-Origin": origin }),
+      ...(isAllowedOrigin && { "Access-Control-Allow-Origin": "*" }),
       ...corsOptions,
     };
     return NextResponse.json({}, { headers: preflightHeaders });
@@ -31,7 +31,7 @@ export function middleware(request) {
   const response = NextResponse.next();
 
   if (isAllowedOrigin) {
-    response.headers.set("Access-Control-Allow-Origin", origin);
+    response.headers.set("Access-Control-Allow-Origin", "*");
   }
 
   Object.entries(corsOptions).forEach(([key, value]) => {
