@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 function PlansAndPrice() {
   const [showModal, setShowModal] = useState(false);
@@ -48,6 +49,7 @@ function PlansAndPrice() {
       })
       .then((data) => {
         console.log(data.data.message);
+        <Navigate to={`${data.data.message}`} replace={true} />;
       })
       .catch((err) => {
         console.log(err);
