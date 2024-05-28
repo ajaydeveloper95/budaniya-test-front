@@ -53,10 +53,13 @@ export default async function payment(req, res) {
       axios
         .request(options)
         .then(function (response) {
-          return res.status(200).json({ response, success: true });
+          return res.redirect(
+            307,
+            response.data.data.instrumentResponse.redirectInfo.url
+          );
         })
         .catch(function (error) {
-          return res.status(500).json({ success: false, message: error });
+          console.error(error);
         });
       // axios api call end
     } catch (error) {
