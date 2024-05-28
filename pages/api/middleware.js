@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 
-const allowedOrigins = ["https://mercury.phonepe.com","*"];
+const allowedOrigins = [
+  "https://mercury.phonepe.com",
+  "https://budaniyatechnologies.com",
+];
 
 const corsOptions = {
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
@@ -9,7 +12,7 @@ const corsOptions = {
 
 export function middleware(request) {
   // Check the origin from the request
-  const origin = request.headers.get("origin") ?? "*";
+  const origin = request.headers.get("origin") ?? "";
   const isAllowedOrigin = allowedOrigins.includes(origin);
 
   // Handle preflighted requests
