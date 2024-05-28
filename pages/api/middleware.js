@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 const allowedOrigins = [
   "https://mercury.phonepe.com",
   "https://budaniyatechnologies.com",
+  "https://mercury-t2.phonepe.com",
 ];
 
 const corsOptions = {
