@@ -47,7 +47,7 @@ function PlansAndPrice() {
         phone: "8000623206",
       })
       .then((data) => {
-        console.log(data);
+        console.log(data.data.message);
       })
       .catch((err) => {
         console.log(err);
