@@ -15,29 +15,43 @@ function PlansAndPrice() {
 
   const onPayment = () => {
     const url = "https://budaniyatechnologies.com/api/payment/";
-    if (
-      getData.name !== undefined &&
-      getData.email !== undefined &&
-      getData.phone !== undefined &&
-      getData.amount !== 0
-    ) {
-      console.log(getData);
-      axios
-        .post(url, {
-          email: "kumarajay4113@gmail.com",
-          name: "Ajay kumar",
-          amount: 2,
-          phone: "8000623206",
-        })
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      console.log("some issue on post payment request");
-    }
+    // if (
+    //   getData.name !== undefined &&
+    //   getData.email !== undefined &&
+    //   getData.phone !== undefined &&
+    //   getData.amount !== 0
+    // ) {
+    //   console.log(getData);
+    //   axios
+    //     .post(url, {
+    //       email: "kumarajay4113@gmail.com",
+    //       name: "Ajay kumar",
+    //       amount: 2,
+    //       phone: "8000623206",
+    //     })
+    //     .then((data) => {
+    //       console.log(data);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // } else {
+    //   console.log("some issue on post payment request");
+    // }
+
+    axios
+      .post(url, {
+        email: "kumarajay4113@gmail.com",
+        name: "Ajay kumar",
+        amount: 2,
+        phone: "8000623206",
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
