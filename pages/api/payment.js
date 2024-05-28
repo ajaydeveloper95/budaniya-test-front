@@ -57,7 +57,6 @@ export default async function payment(req, res) {
         })
         .catch(function (error) {
           return res.status(500).json({ success: false, message: error });
-          console.error(error);
         });
       // axios api call end
     } catch (error) {
