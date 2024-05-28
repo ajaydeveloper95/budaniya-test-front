@@ -9,19 +9,22 @@ const allowedOrigins = [
 const corsOptions = {
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  "Access-Control-Allow-Origin": "https://mercury.phonepe.com",
 };
 
 export function middleware(request) {
   // Check the origin from the request
   const origin = request.headers.get("origin") ?? "";
-  const isAllowedOrigin = "*";
+  const isAllowedOrigin = "https://mercury.phonepe.com/";
 
   // Handle preflighted requests
   const isPreflight = request.method === "OPTIONS";
 
   if (isPreflight) {
     const preflightHeaders = {
-      ...(isAllowedOrigin && { "Access-Control-Allow-Origin": "*" }),
+      ...(isAllowedOrigin && {
+        "Access-Control-Allow-Origin": "https://mercury.phonepe.com/",
+      }),
       ...corsOptions,
     };
     return NextResponse.json({}, { headers: preflightHeaders });
@@ -31,7 +34,10 @@ export function middleware(request) {
   const response = NextResponse.next();
 
   if (isAllowedOrigin) {
-    response.headers.set("Access-Control-Allow-Origin", "*");
+    response.headers.set(
+      "Access-Control-Allow-Origin",
+      "https://mercury.phonepe.com/"
+    );
   }
 
   Object.entries(corsOptions).forEach(([key, value]) => {
